@@ -1,31 +1,51 @@
-/***********************
- * File: money.cpp
- ***********************/
-
-#include <iostream>
 #include <iomanip>
+#include <string>
+#include <iostream>
 using namespace std;
 
 #include "point.h"
 
-/*****************************************************************
- * Function: prompt
- * Purpose: Asks the user for values for dollars and cents
- *   and stores them.
- ****************************************************************/
-
-inline void Point::display()
+/******************************************
+ * Function: display
+ * Purpose: Displays the point
+ ******************************************/
+void Point :: display() const
 {
-	cout << "testDisplayPoint" << endl;
+   // Note: We could just use x and y here and not the getters
+   // because it's a member function. But this will force you
+   // to deal with const :-)...
+
+   cout << "(" << getX() << ", " << getY() << ")";
 }
 
-int Point::getXPos()
+void Point::setX(int xin)
 {
-	cout << "getXPos" << endl;
-	return 20;
+	if (xin < 1)
+		x = 1;
+	else if (xin > 10)
+		x = 10;
+	else if (xin >= 1 && xin <= 10)
+		x = xin;
 }
-int Point::getYPos()
+
+void Point::setY(int yin)
 {
-	cout << "getYPos" << endl;
-	return 10;
+	if (yin < 1)
+		y = 1;
+	else if (yin > 10)
+		y = 10;
+	else if (yin >= 1 && yin <= 10)
+		y = yin;
+}
+
+Point::Point() 
+{
+	x = 5;
+	y = 5;
+}
+
+Point::Point(int xin, int yin)
+{
+	setX(xin);
+	setY(yin);
 }
